@@ -1,8 +1,8 @@
-variable "AWS_REGION" {
+variable "aws_region" {
   description = "AWS region.  Example: us-east-2"
 }
 
-variable "DEPLOYMENT_NAME" {
+variable "deployment_name" {
   description = "Name of deployment - used for the cluster name.  Example: rotate"
 }
 
@@ -40,11 +40,11 @@ terraform {
 }
 
 provider "aws" {
-  region = var.AWS_REGION
+  region = var.aws_region
 }
 
 locals {
-  cluster_name = "eks-demo-${var.DEPLOYMENT_NAME}"
+  cluster_name = "eks-demo-${var.deployment_name}"
 }
 
 module "eks" {

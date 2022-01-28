@@ -31,7 +31,7 @@ output "config_map_aws_auth" {
 
 output "region" {
   description = "EKS region"
-  value       = var.AWS_REGION
+  value       = var.aws_region
 }
 
 output "cluster_name" {
