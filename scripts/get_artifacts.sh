@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eou pipefail
+set -eu
 # 
 # This script is used to fetch github release assets and write them out to a tmp path to upload to other destinations
 #
