@@ -20,4 +20,4 @@ jobs:
           aws-region: us-east-2
 
       - name: upload artifacts to s3
-        run: aws s3 sync /tmp/files/ s3://{{ secrets.AWS_BUCKET }}
+        run: aws s3 sync /tmp/files/ s3://${{ secrets.AWS_BUCKET }}
