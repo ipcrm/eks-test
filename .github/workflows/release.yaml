@@ -8,5 +8,5 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: run get archive script
-        run: sh ./scripts/get_archive.sh ${{ github.event.release.assets_url }}
+      - name: run get artifact script
+        run: sh ./scripts/get_artifacts.sh ${{ github.event.release.assets_url }}
