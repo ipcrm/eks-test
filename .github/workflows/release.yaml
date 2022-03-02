@@ -6,4 +6,7 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     steps:
-      - run: sh ./scripts/get_archive.sh ${{ github.event.release.assets_url }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: run get archive script
+        run: sh ./scripts/get_archive.sh ${{ github.event.release.assets_url }}
