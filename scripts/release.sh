@@ -199,14 +199,13 @@ generate_release_notes() {
 
 push_release() {
   log "commiting and pushing the release to github"
-  _version_no_tag=$(echo $VERSION | awk -F. '{printf("%d.%d.%d", $1, $2, $3)}')
   if [ "${CI:-}" != "" ]; then
     git config --global user.email $git_email
     git config --global user.name $git_user
     git config --global user.signingkey $GPG_SIGNING_KEY
   fi
   git checkout -B release
-  git commit -sS -am "release: v$_version_no_tag"
+  git commit -sS -am "release: v"
   git push origin release -f
 }
 
