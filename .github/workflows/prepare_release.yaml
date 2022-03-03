@@ -1,0 +1,14 @@
+name: Prepare Release
+on:
+  workflow_dispatch:
+
+jobs:
+  prepare:
+    name: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: run prepare
+        run: git checkout -b release && git push origin release
