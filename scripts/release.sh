@@ -402,9 +402,10 @@ create_release() {
       "${_upload_url}?name=${_artifact}"
 
 
+  new_url=$(cat $_release | jq -r '.url')
   generate_release_body "$_body" "false"
-  curl -XPATCH -H "Authorization: token $GITHUB_TOKEN" --data  "@$_body" \
-        https://api.github.com/repos/${org_name}/${project_name}/releases > $_release
+  log "\n@$_body\n\n"
+  curl -XPATCH -H "Authorization: token $GITHUB_TOKEN" --data  "@$_body" $new_url > $_release
 
   log "the release has been completed!"
   log ""
