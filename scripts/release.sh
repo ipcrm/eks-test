@@ -97,6 +97,8 @@ verify_release() {
 
 prepare_release() {
   log "preparing new release"
+  generate_release_notes
+  update_changelog
   push_release
   open_pull_request
 }
