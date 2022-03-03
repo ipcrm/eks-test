@@ -215,7 +215,7 @@ open_pull_request() {
 
   log "opening GH pull request"
   generate_pr_body "$_body"
-  curl -XPOST -H "Authorization: token $GITHUB_TOKEN" --data  "@$_body" \
+  curl -v -XPOST -H "Authorization: token $GITHUB_TOKEN" --data  "@$_body" \
         https://api.github.com/repos/${org_name}/${project_name}/pulls > $_pr
 
   _pr_url=$(jq .html_url $_pr)
