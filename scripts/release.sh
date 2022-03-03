@@ -102,7 +102,7 @@ prepare_release() {
 }
 
 publish_release() {
-  log "releasing v$VERSION"
+  log "releasing v"
   create_release
 }
 
@@ -394,18 +394,18 @@ create_release() {
   _upload_url=$(jq .upload_url $_release | sed 's/"//g' | cut -d{ -f1)
   log "uploading artifacts to GH release at ($_upload_url)"
 
-  _artifact="$target.tar.gz"
+  _artifact="test.tgz"
   _content_type="application/gzip"
 
   log "uploading /tmp/test.tgz"
   curl -s -H "Authorization: token $GITHUB_TOKEN"  \
       -H "Content-Type: $_content_type"            \
-      --data-binary "@bin/$_artifact"              \
+      --data-binary "@/tmp/$_artifact"              \
       "${_upload_url}?name=${_artifact}"
 
 
   generate_release_body "$_body" "false"
-  curl -XPOST -H "Authorization: token $GITHUB_TOKEN" --data  "@$_body" \
+  curl -XPATCH -H "Authorization: token $GITHUB_TOKEN" --data  "@$_body" \
         https://api.github.com/repos/${org_name}/${project_name}/releases > $_release
 
   log "the release has been completed!"
