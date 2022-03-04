@@ -22,7 +22,7 @@ jobs:
           repository: "lacework-dev/detc"
           tag: "v0.0.5"
           fileName: "*"
-          token: secrets.GH_TOKEN
+          token: ${{ secrets.GH_TOKEN }}
           out-file-path: "files"
       - name: mkdir /tmp/files
         run: mkdir -p /tmp/files
